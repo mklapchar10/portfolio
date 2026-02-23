@@ -1,0 +1,460 @@
+/* ================= ROOT VARIABLES ================= */
+
+:root {
+  --bg: #FAFAF8;
+  --text: #111111;
+  --max-width: 1200px;
+
+  /* Scrolled header */
+  --header-bg-scrolled: rgba(64, 64, 64, 0.7);
+  --header-text-scrolled: #F2F2F2;
+}
+
+/* ================= GLOBAL RESET ================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* ================= STICKY HEADER ================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  padding: 28px 48px;
+  background: transparent;
+
+  transition: background 220ms ease,
+              padding 220ms ease,
+              box-shadow 220ms ease,
+              color 220ms ease;
+}
+
+/* Nav layout */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text);
+  transition: color 220ms ease;
+}
+
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 220ms ease, opacity 220ms ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.75;
+}
+
+/* ================= SCROLLED STATE ================= */
+
+.site-header.is-scrolled {
+  background: var(--header-bg-scrolled);
+  padding: 18px 48px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.site-header.is-scrolled .logo,
+.site-header.is-scrolled .nav-links a {
+  color: var(--header-text-scrolled);
+}
+
+/* Spacer to prevent content jump */
+.page-offset {
+  height: 92px;
+}
+
+/* ================= HERO SECTION ================= */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 48px;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 40px;
+}
+
+/* Portrait Circle */
+.hero-image {
+  position: relative;
+  width: 420px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Decorative stars */
+.star {
+  position: absolute;
+  font-size: 20px;
+}
+
+.star.s1 { left: -25px; top: 100px; }
+.star.s2 { left: -45px; top: 135px; font-size: 26px; }
+.star.s3 { left: -20px; top: 165px; font-size: 16px; }
+
+/* Hero text */
+.hero-text h1 {
+  font-size: 84px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 0 6px 0 rgba(0,0,0,0.15);
+}
+
+.hero-text .role {
+  margin-top: 16px;
+  font-size: 28px;
+  font-weight: 500;
+  text-shadow: 0 3px 0 rgba(0,0,0,0.12);
+}
+
+/* Tagline (single line desktop) */
+.tagline {
+  margin-top: 80px;
+  text-align: center;
+  font-size: 26px;
+  white-space: nowrap;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+
+  .hero-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 64px;
+  }
+
+  .hero-image {
+    width: 320px;
+  }
+
+  .tagline {
+    white-space: normal;
+    font-size: 22px;
+  }
+
+  .site-header {
+    padding: 20px 20px;
+  }
+
+  .site-header.is-scrolled {
+    padding: 14px 20px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .container {
+    padding: 60px 20px;
+  }
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.about-section {
+  padding: 200px 0 140px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr; /* left block + text area */
+  gap: 120px;
+  align-items: center;
+}
+
+.about-image {
+  width: 100%;
+  height: 520px;            /* tall rectangle like the mock */
+  background: #d9d9d9;      /* fallback gray block */
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;        /* keeps image nicely cropped */
+}
+
+/* Right side text */
+.about-content {
+  text-align: center;
+  max-width: 560px;         /* keeps paragraphs narrow like the mock */
+  margin: 0 auto;           /* centers the text block within the right column */
+}
+
+.about-content h2 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+/* Responsive: stack image above text */
+@media (max-width: 1100px) {
+  .about-section {
+    padding: 90px 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-image {
+    height: 420px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .about-content {
+    max-width: 640px;
+  }
+}
+
+/* ================= WORK SECTION ================= */
+
+.work-section {
+  padding: 200px 0 140px; /* same rhythm as your About spacing */
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: start;
+}
+
+.work-heading {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+/* The gray card itself (real card, not an image) */
+.work-card {
+  width: 100%;
+  min-height: 330px;       /* keeps the original card feel */
+  height: auto;            /* allows growth so nothing leaks */
+  background: #D9D9D9;
+  border-radius: 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 26px;
+  gap: 78px;
+}
+
+/* Clickable circular arrow button */
+.arrow-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #404040;     /* charcoal */
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.arrow-btn:hover {
+  background: #4DA3FF;     /* sky blue on hover */
+  transform: translateX(2px);
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.work-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.work-spacer {
+  grid-column: 1;
+}
+
+.work-text {
+  text-align: center;
+  margin: 0 auto;     /* TRUE center */
+  max-width: 320px;
+}
+
+.work-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.work-desc {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+/* Responsive: stack columns */
+@media (max-width: 1100px) {
+  .work-section {
+    padding: 160px 0 110px;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .work-card {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+/* ================= STICKY FOOTER LAYOUT ================= */
+/* This keeps the footer at the bottom when content is short */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page layout */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  flex: 1;
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+  padding: 36px 48px 28px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* icon next to text */
+}
+
+.footer-icon svg {
+  width: 34px;
+  height: 34px;
+  stroke: #111;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .site-footer {
+    padding: 28px 20px 22px;
+  }
+
+  .footer-inner {
+    justify-content: space-between;
+  }
+
+  .footer-link {
+    font-size: 22px;
+  }
+
+  .footer-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+}
