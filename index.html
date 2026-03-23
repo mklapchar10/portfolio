@@ -38,6 +38,7 @@
 
   <!-- HERO -->
   <main class="container">
+
     <section class="hero" id="top">
 
       <div class="hero-top">
@@ -74,13 +75,13 @@
 
       <div class="about-text">
         <p>
-          I am a web designer specializing in UI design. I build clear,
-          structured, websites with user-friendly interfaces
+          I am a web designer specializing in UI design. I design clear,
+          structured, websites with user-friendly interfaces,
           from sketch to wireframe to prototype.
         </p>
 
         <p>
-          I earned my Associate's Degree from Wake Technical
+          I earned my Associate's degree from Wake Technical
           Community College and developed my skills through
           concept projects, regular research, and experimentation
           with color, layout, and interaction in Figma.
@@ -89,7 +90,7 @@
         <p>
           I’m currently seeking entry-level opportunities where
           I can continue to hone my skills, contribute to real-world
-          projects, and grow as a designer and person.
+          projects, and grow as both a designer and person.
         </p>
 
         <p>
@@ -120,7 +121,7 @@
             <div class="work-desc">Used Figma to design a reusable UI kit for a website.</div>
           </div>
 
-          <a class="arrow-btn" href="#" target="_blank" aria-label="View UI Kit project">
+          <a class="arrow-btn" href="https://www.figma.com/design/vaPXFksgaycm0QFy0pTZIN/UI-Kit?node-id=0-1&t=W6ksYHv1F3XAvF4p-1" target="_blank" aria-label="View UI Kit project">
             <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h12M13 6l6 6-6 6"
                 fill="none"
@@ -305,22 +306,37 @@
 </footer>
 
   <!-- Scroll Detection Script -->
-  <script>
-    const header = document.getElementById("siteHeader");
+<script>
+  const header = document.getElementById("siteHeader");
+  const scrollShadow = document.getElementById("scrollShadow");
 
-    function onScroll() {
-      const threshold = 20;
+  function onScroll() {
+    const threshold = 20;
 
-      if (window.scrollY > threshold) {
-        header.classList.add("is-scrolled");
-      } else {
-        header.classList.remove("is-scrolled");
-      }
+    /* ===== HEADER STATE ===== */
+    if (window.scrollY > threshold) {
+      header.classList.add("is-scrolled");
+    } else {
+      header.classList.remove("is-scrolled");
     }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  </script>
+    /* ===== BOTTOM SHADOW VISIBILITY ===== */
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    if (scrollPosition >= pageHeight - 2) {
+      scrollShadow.classList.add("is-hidden");
+    } else {
+      scrollShadow.classList.remove("is-hidden");
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+</script>
+
+  <!-- Scroll indicator shadow -->
+<div class="scroll-shadow" id="scrollShadow"></div>
 
 </body>
 </html>
